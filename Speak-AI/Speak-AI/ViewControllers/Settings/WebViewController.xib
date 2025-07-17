@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController" customModule="Speak_AI" customModuleProvider="target">
+            <connections>
+                <outlet property="indicator" destination="7kt-Pu-N7T" id="eb3-eu-t58"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wkWebView" destination="qfv-cR-4fm" id="ZJd-DB-7Wf"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Sy-cy-b4J">
+                    <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SsD-oy-Pa3">
+                            <rect key="frame" x="20" y="0.0" width="50" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="Hpx-X7-7pd"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="btnBack"/>
+                            <connections>
+                                <action selector="doBack:" destination="-1" eventType="touchUpInside" id="wSB-m2-XnE"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="SsD-oy-Pa3" firstAttribute="leading" secondItem="0Sy-cy-b4J" secondAttribute="leading" constant="20" id="Buk-y4-YAA"/>
+                        <constraint firstAttribute="height" constant="44" id="t5D-rr-LB5"/>
+                        <constraint firstItem="SsD-oy-Pa3" firstAttribute="top" secondItem="0Sy-cy-b4J" secondAttribute="top" id="xZt-aO-lSq"/>
+                        <constraint firstAttribute="bottom" secondItem="SsD-oy-Pa3" secondAttribute="bottom" id="xuf-Uq-DYb"/>
+                    </constraints>
+                </view>
+                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfv-cR-4fm">
+                    <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="7kt-Pu-N7T">
+                    <rect key="frame" x="186.66666666666666" y="467.66666666666669" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="7kt-Pu-N7T" firstAttribute="centerX" secondItem="qfv-cR-4fm" secondAttribute="centerX" id="44k-bE-PtZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qfv-cR-4fm" secondAttribute="trailing" id="GtT-1S-Sfq"/>
+                <constraint firstItem="0Sy-cy-b4J" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PC9-tc-exp"/>
+                <constraint firstAttribute="bottom" secondItem="qfv-cR-4fm" secondAttribute="bottom" id="QXP-HH-Bd4"/>
+                <constraint firstItem="7kt-Pu-N7T" firstAttribute="centerY" secondItem="qfv-cR-4fm" secondAttribute="centerY" id="YNd-Af-l1V"/>
+                <constraint firstItem="qfv-cR-4fm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dL0-BD-khU"/>
+                <constraint firstItem="0Sy-cy-b4J" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="eDM-Cq-crA"/>
+                <constraint firstItem="qfv-cR-4fm" firstAttribute="top" secondItem="0Sy-cy-b4J" secondAttribute="bottom" id="rCZ-5m-ydO"/>
+                <constraint firstItem="0Sy-cy-b4J" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="xjH-x6-o41"/>
+            </constraints>
+            <point key="canvasLocation" x="-37" y="-1"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btnBack" width="40" height="40"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

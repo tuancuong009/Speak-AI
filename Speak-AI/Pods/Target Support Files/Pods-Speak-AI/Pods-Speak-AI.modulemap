@@ -1,0 +1,6 @@
+framework module Pods_Speak_AI {
+  umbrella header "Pods-Speak-AI-umbrella.h"
+
+  export *
+  module * { export * }
+}

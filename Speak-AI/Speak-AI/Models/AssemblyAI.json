@@ -1,0 +1,521 @@
+[
+    {
+      "Language": "Auto Detect",
+      "LanguageCode": "AutoDetect",
+      "IsBest": true,
+      "Img": "icDetectLanguage"
+    },
+  {
+    "Language": "Global English",
+    "LanguageCode": "en",
+    "IsBest": true,
+    "Img": "icEnglish"
+  },
+  {
+    "Language": "Australian English",
+    "LanguageCode": "en_au",
+    "IsBest": true
+  },
+  {
+    "Language": "British English",
+    "LanguageCode": "en_uk",
+    "IsBest": true
+  },
+  {
+    "Language": "American English",
+    "LanguageCode": "en_us",
+    "IsBest": false
+  },
+  {
+    "Language": "Spanish",
+    "LanguageCode": "es",
+    "IsBest": true,
+    "Img": "icSpanish"
+  },
+  {
+      "Language": "Arabic",
+      "LanguageCode": "ar",
+      "IsBest": false,
+      "Img": "icAribic"
+    },
+  {
+    "Language": "French",
+    "LanguageCode": "fr",
+    "IsBest": true,
+    "Img": "icFrech"
+  },
+  {
+    "Language": "German",
+    "LanguageCode": "de",
+    "IsBest": true
+  },
+  {
+    "Language": "Italian",
+    "LanguageCode": "it",
+    "IsBest": true
+  },
+  {
+    "Language": "Portuguese",
+    "LanguageCode": "pt",
+    "IsBest": true
+  },
+  {
+    "Language": "Dutch",
+    "LanguageCode": "nl",
+    "IsBest": true
+  },
+  {
+    "Language": "Afrikaans",
+    "LanguageCode": "af",
+    "IsBest": false
+  },
+  {
+    "Language": "Albanian",
+    "LanguageCode": "sq",
+    "IsBest": false
+  },
+  {
+    "Language": "Amharic",
+    "LanguageCode": "am",
+    "IsBest": false
+  },
+
+  {
+    "Language": "Armenian",
+    "LanguageCode": "hy",
+    "IsBest": false
+  },
+  {
+    "Language": "Assamese",
+    "LanguageCode": "as",
+    "IsBest": false
+  },
+  {
+    "Language": "Azerbaijani",
+    "LanguageCode": "az",
+    "IsBest": false
+  },
+  {
+    "Language": "Bashkir",
+    "LanguageCode": "ba",
+    "IsBest": false
+  },
+  {
+    "Language": "Basque",
+    "LanguageCode": "eu",
+    "IsBest": false
+  },
+  {
+    "Language": "Belarusian",
+    "LanguageCode": "be",
+    "IsBest": false
+  },
+  {
+    "Language": "Bengali",
+    "LanguageCode": "bn",
+    "IsBest": false
+  },
+  {
+    "Language": "Bosnian",
+    "LanguageCode": "bs",
+    "IsBest": false
+  },
+  {
+    "Language": "Breton",
+    "LanguageCode": "br",
+    "IsBest": false
+  },
+  {
+    "Language": "Bulgarian",
+    "LanguageCode": "bg",
+    "IsBest": false
+  },
+  {
+    "Language": "Burmese",
+    "LanguageCode": "my",
+    "IsBest": false
+  },
+  {
+    "Language": "Catalan",
+    "LanguageCode": "ca",
+    "IsBest": false
+  },
+  {
+    "Language": "Chinese",
+    "LanguageCode": "zh",
+    "IsBest": true
+  },
+  {
+    "Language": "Croatian",
+    "LanguageCode": "hr",
+    "IsBest": false
+  },
+  {
+    "Language": "Czech",
+    "LanguageCode": "cs",
+    "IsBest": false
+  },
+  {
+    "Language": "Danish",
+    "LanguageCode": "da",
+    "IsBest": false
+  },
+  {
+    "Language": "Estonian",
+    "LanguageCode": "et",
+    "IsBest": false
+  },
+  {
+    "Language": "Faroese",
+    "LanguageCode": "fo",
+    "IsBest": false
+  },
+  {
+    "Language": "Finnish",
+    "LanguageCode": "fi",
+    "IsBest": true
+  },
+  {
+    "Language": "Galician",
+    "LanguageCode": "gl",
+    "IsBest": false
+  },
+  {
+    "Language": "Georgian",
+    "LanguageCode": "ka",
+    "IsBest": false
+  },
+  {
+    "Language": "Greek",
+    "LanguageCode": "el"
+  },
+  {
+    "Language": "Gujarati",
+    "LanguageCode": "gu",
+    "IsBest": false
+  },
+  {
+    "Language": "Haitian",
+    "LanguageCode": "ht",
+    "IsBest": false
+  },
+  {
+    "Language": "Hausa",
+    "LanguageCode": "ha",
+    "IsBest": false
+  },
+  {
+    "Language": "Hawaiian",
+    "LanguageCode": "haw",
+    "IsBest": false
+  },
+  {
+    "Language": "Hebrew",
+    "LanguageCode": "he",
+    "IsBest": false
+  },
+  {
+    "Language": "Hindi",
+    "LanguageCode": "hi",
+    "IsBest": true
+  },
+  {
+    "Language": "Hungarian",
+    "LanguageCode": "hu",
+    "IsBest": false
+  },
+  {
+    "Language": "Icelandic",
+    "LanguageCode": "is",
+    "IsBest": false
+  },
+  {
+    "Language": "Indonesian",
+    "LanguageCode": "id",
+    "IsBest": false
+  },
+  {
+    "Language": "Japanese",
+    "LanguageCode": "ja",
+    "IsBest": true
+  },
+  {
+    "Language": "Javanese",
+    "LanguageCode": "jw",
+    "IsBest": false
+  },
+  {
+    "Language": "Kannada",
+    "LanguageCode": "kn",
+    "IsBest": false
+  },
+  {
+    "Language": "Kazakh",
+    "LanguageCode": "kk",
+    "IsBest": false
+  },
+  {
+    "Language": "Khmer",
+    "LanguageCode": "km",
+    "IsBest": false
+  },
+  {
+    "Language": "Korean",
+    "LanguageCode": "ko",
+    "IsBest": true
+  },
+  {
+    "Language": "Lao",
+    "LanguageCode": "lo",
+    "IsBest": false
+  },
+  {
+    "Language": "Latin",
+    "LanguageCode": "la",
+    "IsBest": false
+  },
+  {
+    "Language": "Latvian",
+    "LanguageCode": "lv",
+    "IsBest": false
+  },
+  {
+    "Language": "Lingala",
+    "LanguageCode": "ln",
+    "IsBest": false
+  },
+  {
+    "Language": "Lithuanian",
+    "LanguageCode": "lt",
+    "IsBest": false
+  },
+  {
+    "Language": "Luxembourgish",
+    "LanguageCode": "lb",
+    "IsBest": false
+  },
+  {
+    "Language": "Macedonian",
+    "LanguageCode": "mk",
+    "IsBest": false
+  },
+  {
+    "Language": "Malagasy",
+    "LanguageCode": "mg",
+    "IsBest": false
+  },
+  {
+    "Language": "Malay",
+    "LanguageCode": "ms",
+    "IsBest": false
+  },
+  {
+    "Language": "Malayalam",
+    "LanguageCode": "ml",
+    "IsBest": false
+  },
+  {
+    "Language": "Maltese",
+    "LanguageCode": "mt",
+    "IsBest": false
+  },
+  {
+    "Language": "Maori",
+    "LanguageCode": "mi",
+    "IsBest": false
+  },
+  {
+    "Language": "Marathi",
+    "LanguageCode": "mr",
+    "IsBest": false
+  },
+  {
+    "Language": "Mongolian",
+    "LanguageCode": "mn",
+    "IsBest": false
+  },
+  {
+    "Language": "Nepali",
+    "LanguageCode": "ne",
+    "IsBest": false
+  },
+  {
+    "Language": "Norwegian",
+    "LanguageCode": "no",
+    "IsBest": false
+  },
+  {
+    "Language": "Norwegian Nynorsk",
+    "LanguageCode": "nn",
+    "IsBest": false
+  },
+  {
+    "Language": "Occitan",
+    "LanguageCode": "oc",
+    "IsBest": false
+  },
+  {
+    "Language": "Panjabi",
+    "LanguageCode": "pa",
+    "IsBest": false
+  },
+  {
+    "Language": "Pashto",
+    "LanguageCode": "ps"
+  },
+  {
+    "Language": "Persian",
+    "LanguageCode": "fa",
+    "IsBest": false
+  },
+  {
+    "Language": "Polish",
+    "LanguageCode": "pl",
+    "IsBest": true
+  },
+  {
+    "Language": "Romanian",
+    "LanguageCode": "ro",
+    "IsBest": false
+  },
+  {
+    "Language": "Russian",
+    "LanguageCode": "ru",
+    "IsBest": true
+  },
+  {
+    "Language": "Sanskrit",
+    "LanguageCode": "sa",
+    "IsBest": false
+  },
+  {
+    "Language": "Serbian",
+    "LanguageCode": "sr",
+    "IsBest": false
+  },
+  {
+    "Language": "Shona",
+    "LanguageCode": "sn",
+    "IsBest": false
+  },
+  {
+    "Language": "Sindhi",
+    "LanguageCode": "sd",
+    "IsBest": false
+  },
+  {
+    "Language": "Sinhala",
+    "LanguageCode": "si",
+    "IsBest": false
+  },
+  {
+    "Language": "Slovak",
+    "LanguageCode": "sk",
+    "IsBest": false
+  },
+  {
+    "Language": "Slovenian",
+    "LanguageCode": "sl",
+    "IsBest": false
+  },
+  {
+    "Language": "Somali",
+    "LanguageCode": "so",
+    "IsBest": false
+  },
+  {
+    "Language": "Sundanese",
+    "LanguageCode": "su",
+    "IsBest": false
+  },
+  {
+    "Language": "Swahili",
+    "LanguageCode": "sw",
+    "IsBest": false
+  },
+  {
+    "Language": "Swedish",
+    "LanguageCode": "sv",
+    "IsBest": false
+  },
+  {
+    "Language": "Tagalog",
+    "LanguageCode": "tl",
+    "IsBest": false
+  },
+  {
+    "Language": "Tajik",
+    "LanguageCode": "tg",
+    "IsBest": false
+  },
+  {
+    "Language": "Tamil",
+    "LanguageCode": "ta",
+    "IsBest": false
+  },
+  {
+    "Language": "Tatar",
+    "LanguageCode": "tt",
+    "IsBest": false
+  },
+  {
+    "Language": "Telugu",
+    "LanguageCode": "te",
+    "IsBest": false
+  },
+  {
+    "Language": "Thai",
+    "LanguageCode": "th",
+    "IsBest": false
+  },
+  {
+    "Language": "Tibetan",
+    "LanguageCode": "bo",
+    "IsBest": false
+  },
+  {
+    "Language": "Turkish",
+    "LanguageCode": "tr",
+    "IsBest": true
+  },
+  {
+    "Language": "Turkmen",
+    "LanguageCode": "tk",
+    "IsBest": false
+  },
+  {
+    "Language": "Ukrainian",
+    "LanguageCode": "uk",
+    "IsBest": true
+  },
+  {
+    "Language": "Urdu",
+    "LanguageCode": "ur",
+    "IsBest": false
+  },
+  {
+    "Language": "Uzbek",
+    "LanguageCode": "uz",
+    "IsBest": false
+  },
+  {
+    "Language": "Vietnamese",
+    "LanguageCode": "vi",
+    "IsBest": true
+  },
+  {
+    "Language": "Welsh",
+    "LanguageCode": "cy",
+    "IsBest": false
+  },
+  {
+    "Language": "Yiddish",
+    "LanguageCode": "yi",
+    "IsBest": false
+  },
+  {
+    "Language": "Yoruba",
+    "LanguageCode": "yo",
+    "IsBest": false
+  }
+]

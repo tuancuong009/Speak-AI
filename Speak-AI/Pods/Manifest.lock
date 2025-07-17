@@ -1,0 +1,24 @@
+PODS:
+  - ApphudSDK (3.1.0)
+  - RappleProgressHUD (4.1)
+  - SwiftReorder (7.2.0)
+
+DEPENDENCIES:
+  - ApphudSDK (= 3.1.0)
+  - RappleProgressHUD
+  - SwiftReorder (~> 7.2)
+
+SPEC REPOS:
+  trunk:
+    - ApphudSDK
+    - RappleProgressHUD
+    - SwiftReorder
+
+SPEC CHECKSUMS:
+  ApphudSDK: 37bf7c088dd98dc8edac54bf79f003d5d5cdf0fd
+  RappleProgressHUD: f29bc5dc5f9834c2caa9c2ae21ba11f3ff2b5a85
+  SwiftReorder: d687883abf5f2327268e006b038025a6fc515e34
+
+PODFILE CHECKSUM: bf65a0fc63a7bb5c75c262715c4e7258e3ea3df5
+
+COCOAPODS: 1.14.3
