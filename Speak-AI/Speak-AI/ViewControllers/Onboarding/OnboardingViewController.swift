@@ -24,6 +24,7 @@ class OnboardingViewController: UIViewController {
         if indexPage == arrOnboardings.count - 1 {
             AppSetings.shared.updateOnboarding()
             AppDelegate.shared.initHome()
+            AnalyticsManager.shared.trackEvent(.Onboarding_Completed)
         }
         else{
             cltOnboarding.scrollToItem(at: IndexPath.init(row: indexPage + 1, section: 0), at: .right, animated: true)
@@ -61,7 +62,7 @@ extension OnboardingViewController{
             OnboardingModel.init(image: UIImage.init(named: "slide2") ?? UIImage.init(), title: "Transcribe Anything", desc: "From Files, Audios or even Youtube Videos"),
             OnboardingModel.init(image: UIImage.init(named: "slide3") ?? UIImage.init(), title: "AI Text Editing", desc: "Unlock powerful AI tools to quickly edit and transform your transcribed text."),
             OnboardingModel.init(image: UIImage.init(named: "slide4") ?? UIImage.init(), title: "Support Multi Languages", desc: "Transcribe in 100+ Languages AI-Powered Support for Multilingual Users"),
-            OnboardingModel.init(image: UIImage.init(named: "slide5") ?? UIImage.init(), title: "Help us grow!", desc: "Transcribe in 100+ Languages AI-Powered Support for Multilingual Users")
+           // OnboardingModel.init(image: UIImage.init(named: "slide5") ?? UIImage.init(), title: "Help us grow!", desc: "Transcribe in 100+ Languages AI-Powered Support for Multilingual Users")
         ]
     }
 }
@@ -95,11 +96,11 @@ extension OnboardingViewController: UIScrollViewDelegate{
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         
         indexPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
-        if indexPage == arrOnboardings.count - 1{
-            if !isShowRate{
-                isShowRate = true
-                showRateApp()
-            }
-        }
+//        if indexPage == arrOnboardings.count - 1{
+//            if !isShowRate{
+//                isShowRate = true
+//                showRateApp()
+//            }
+//        }
     }
 }

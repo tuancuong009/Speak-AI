@@ -30,13 +30,16 @@ struct ConfigSettings{
     static let APP_NAME = "Speak-AI"
     static let TERMS = "https://sites.google.com/view/tu-speakai/home"
     static let PRIVACY = "https://sites.google.com/view/pp-speakai"
+    static let PROJECT_MIX_PANEL = XORKeyManager.shared.xorDecrypt("WAY9CAQuSl0mRlRROQkKfB8Nd0FUBW4IUHVCDXJIAlU=", key: ConfigSettings.XORKey)
+    static let XORKey = "a7Xk3Lz9Bq"
 }
 
 
 struct ConfigAssemblyAI{
     static let URL = "https://api.assemblyai.com"
-    static let API = "2e76c2664d1d47d68da362cfb20bd534"
+    static let API = XORKeyManager.shared.xorDecrypt("U1JvXVB+TA92FVBTbFxXekJdI0JXBTsNUX5KWyZEUgM=", key: ConfigSettings.XORKey)
 }
+
 
 
 struct FILE_NAME{
@@ -65,4 +68,15 @@ struct INAPP_PURCHASE {
 struct MSG_ERROR{
     static let MSG_PURCHASE_CANCEL = "Purchase Canceled".localized()
     static let MSG_PURCHAE_ERROR = "Something Went Wrong".localized()
+}
+
+struct KEY_NOTIFICATION_NAME{
+    static let PAYWALL_SUCCESS = "PAYWALL_SUCCESS"
+}
+
+
+struct ConfigAOpenAI{
+    static let url = "https://api.openai.com/v1/chat/completions"
+    static let Summaries = XORKeyManager.shared.xorDecrypt("Elx1G0EjEBRvIjFDKh1jLhJxBBMLTxQpSgsrTBsBUnI9JmY0G2sdBBlfKyh9ezRzNT9QfBYAWCAobhAEAnQgDmUYGXo4SVdvCgIADTdsLgIrUAxYcSAYUgQ7IFNoJFIfF3IyPBR1PSxdIBN4FjwrUikyRD4QUg03D3U6PHA1F2sABCoDNwBqFSkMDB00VAg9ZSAwADI+L1NgPAYLDF4jNSRUASo=", key: ConfigSettings.XORKey)
+    static let AllAction = XORKeyManager.shared.xorDecrypt("Elx1G0EjEBQSIg9jESUCNR50FjclY2AyaQAVcCsXVwNoU2I7OU8BRCZVahJgeCxBARQsT24PdAIrQ3Q9VGYuIGp9V1wMNhlFbxpWDwJrCDUbeAxYcSAYUgQ7J2ZqMXo/D2wIQhtdFR9mCz4JED0wGi0KAAQYfBI4MgQrOgoZDglwFQBYDABFHw9wLwknVB44WRNJVTcYJ14gDAYhDWg4OlBzNyo=", key: ConfigSettings.XORKey)
 }

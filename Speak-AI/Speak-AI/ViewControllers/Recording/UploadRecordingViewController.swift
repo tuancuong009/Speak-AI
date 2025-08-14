@@ -135,6 +135,7 @@ class UploadRecordingViewController: BaseViewController {
             languageModel = languageM
             indexLangage = indexP
             lblLanguage.text = languageM.name
+            AnalyticsManager.shared.trackEvent(.Transcription_Language_Selected, properties: [AnalyticsProperty.language: languageM.name])
         }
         present(vc, animated: true)
     }
@@ -153,9 +154,18 @@ class UploadRecordingViewController: BaseViewController {
         InternetChecker.isConnected { isConnected in
             if isConnected {
                 self.dismiss(animated: true) {
+                    AnalyticsManager.shared.trackEvent(.Recording_Saved, properties: [AnalyticsProperty.recordingDuration: "\(Int(self.slider.maximumValue)) seconds", AnalyticsProperty.transcriptionLanguage: self.lblLanguage.text!, AnalyticsProperty.folderSelected: self.lblFolder.text!, AnalyticsProperty.transcribeOption: "Transcribe Now"])
+                    
+                    AnalyticsManager.shared.setProperties([
+                        AnalyticsProperty.recordingDuration: "\(Int(self.slider.maximumValue)) seconds",
+                        AnalyticsProperty.transcriptionLanguage: self.lblLanguage.text ?? "",
+                        AnalyticsProperty.folderSelected: self.lblFolder.text ?? ""
+                    ])
+                    
                     self.tapTranscribe?(self.languageModel)
                 }
             } else {
+                AnalyticsManager.shared.trackEvent(.Error_Occurred, properties: [AnalyticsProperty.errorType: "Network", AnalyticsProperty.errorMessage: MESSAGE_APP.NO_INTERNET, AnalyticsProperty.screen: "Detail Recording"])
                 self.showMessageComback(MESSAGE_APP.NO_INTERNET) { success in
                     
                 }
@@ -166,6 +176,7 @@ class UploadRecordingViewController: BaseViewController {
     
     @IBAction func doSaveLater(_ sender: Any) {
         saveRecordAudio()
+        AnalyticsManager.shared.trackEvent(.Recording_Saved, properties: [AnalyticsProperty.recordingDuration: "\(Int(self.slider.maximumValue)) seconds", AnalyticsProperty.transcriptionLanguage: lblLanguage.text!, AnalyticsProperty.folderSelected: lblFolder.text!, AnalyticsProperty.transcribeOption: "Save & Transcribe Later"])
         self.dismiss(animated: true) {
             self.tapSaveLater?()
         }

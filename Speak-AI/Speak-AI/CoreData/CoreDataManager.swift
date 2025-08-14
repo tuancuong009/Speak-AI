@@ -545,6 +545,26 @@ final class CoreDataManager {
         return data
     }
     
+    func fetchAllRecordActions() -> [RecordActionObj] {
+        var data: [RecordActionObj] = []
+        
+        guard let managedContext = self.managedContext else {
+            return data
+        }
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "RecordActions")
+        let sectionSortDescriptor = NSSortDescriptor(key: "action", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        fetchRequest.sortDescriptors = sortDescriptors
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            
+            data = results.compactMap({ RecordActionObj.init(object: $0) })
+            print(data)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        return data
+    }
     
     func updatTextRecordAction(withID id: String, action: Int, text: String) -> Bool {
         guard let managedContext = self.managedContext else {

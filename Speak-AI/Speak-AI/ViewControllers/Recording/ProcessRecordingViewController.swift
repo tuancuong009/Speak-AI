@@ -149,6 +149,8 @@ extension ProcessRecordingViewController{
                             }
                         }
                     case .failure(let error):
+                        AnalyticsManager.shared.trackEvent(.Error_Occurred, properties: [AnalyticsProperty.errorType: "Network", AnalyticsProperty.errorMessage: "Upload fail: \(error)", AnalyticsProperty.screen: "Process Recording"])
+                        
                         self.showMessageComback("❌ Upload failed: \(error)") { success in
                             
                         }
@@ -156,6 +158,8 @@ extension ProcessRecordingViewController{
                     }
                 }
         } catch {
+            AnalyticsManager.shared.trackEvent(.Error_Occurred, properties: [AnalyticsProperty.errorType: "Network", AnalyticsProperty.errorMessage: "Could not read file: \(error.localizedDescription)", AnalyticsProperty.screen: "Process Recording"])
+            
             self.showMessageComback("Could not read file: \(error.localizedDescription)") { success in
                 
             }
@@ -240,6 +244,8 @@ extension ProcessRecordingViewController{
                             if let text = json["text"] as? String {
                                 print("✅ Text from audio: \(text)")
                                 if text.trimmed.isEmpty{
+                                    AnalyticsManager.shared.trackEvent(.Error_Occurred, properties: [AnalyticsProperty.errorType: "Network", AnalyticsProperty.errorMessage: "Cannot get the transcription", AnalyticsProperty.screen: "Process Recording"])
+                                    
                                     self.showMessageComback("Cannot get the transcription, please try again.") { success in
                                         APP_DELEGATE.initHome()
                                     }
@@ -259,6 +265,7 @@ extension ProcessRecordingViewController{
                             }
                         } else if status == "failed"  || status == "error"{
                             print("❌ Fail")
+                            AnalyticsManager.shared.trackEvent(.Error_Occurred, properties: [AnalyticsProperty.errorType: "Network", AnalyticsProperty.errorMessage: "Cannot get the transcription", AnalyticsProperty.screen: "Process Recording"])
                             self.showMessageComback("Cannot transcribe the audio file, please try again.") { success in
                                 APP_DELEGATE.initHome()
                             }
@@ -270,6 +277,7 @@ extension ProcessRecordingViewController{
                         }
                     }
                 case .failure(let error):
+                    AnalyticsManager.shared.trackEvent(.Error_Occurred, properties: [AnalyticsProperty.errorType: "Network", AnalyticsProperty.errorMessage: error.localizedDescription, AnalyticsProperty.screen: "Process Recording"])
                     self.showMessageComback("\(error.localizedDescription)") { success in
                         APP_DELEGATE.initHome()
                     }

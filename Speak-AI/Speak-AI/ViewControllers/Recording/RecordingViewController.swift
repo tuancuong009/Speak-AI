@@ -48,7 +48,9 @@ class RecordingViewController: UIViewController {
         }
         mic?.pauseMonitoring()
         stopTimer()
+        AnalyticsManager.shared.trackEvent(.Limit_CTA_Clicked, properties: [AnalyticsProperty.recordingDuration: "\(increaseTime) seconds"])
         let vc = PaywallViewController.instantiate()
+        vc.typePaywall = .limitPaywall
         let nav = UINavigationController(rootViewController: vc)
         nav.isNavigationBarHidden = true
         nav.modalPresentationStyle = .fullScreen
@@ -64,6 +66,7 @@ class RecordingViewController: UIViewController {
     
     @IBAction func doPause(_ sender: Any) {
         if increaseTime >= numerLimit - 1 {
+            
             isStop = true
             stopRecording()
         }
@@ -111,6 +114,7 @@ extension RecordingViewController{
         stopAll()
         let nextVC = UploadRecordingViewController.init()
         nextVC.tapSaveLater = { [] in
+            AnalyticsManager.shared.trackEvent(.Save_Transcribe_Later_Clicked)
             self.tapAgainData?()
             self.navigationController?.popViewController(animated: true)
         }

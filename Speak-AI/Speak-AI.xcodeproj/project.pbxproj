@@ -13,6 +13,10 @@
 		8800EC6F2D96A71C0035F4E8 /* SpeakWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800EC6C2D96A71C0035F4E8 /* SpeakWidget.swift */; };
 		8800EC712D96A71C0035F4E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8800EC6A2D96A71C0035F4E8 /* Assets.xcassets */; };
 		8800EC782D96B0D80035F4E8 /* SpeakWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800EC772D96B0D70035F4E8 /* SpeakWidgetBundle.swift */; };
+		8811139A2E4C3EE800A605DD /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 881113992E4C3EE800A605DD /* Mixpanel */; };
+		8811139D2E4C40C400A605DD /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811139C2E4C40C400A605DD /* AnalyticsManager.swift */; };
+		8811139F2E4C436000A605DD /* AnalyticsProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811139E2E4C436000A605DD /* AnalyticsProperty.swift */; };
+		881113A12E4C6BD500A605DD /* AppOpenTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881113A02E4C6BD500A605DD /* AppOpenTracker.swift */; };
 		8813E1C52D8954B500B2B617 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8813E1C32D8954B500B2B617 /* CoreDataManager.swift */; };
 		8813E1C82D8954DF00B2B617 /* speakAI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8813E1C62D8954DF00B2B617 /* speakAI.xcdatamodeld */; };
 		8813E1CA2D8955CC00B2B617 /* FolderObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8813E1C92D8955CC00B2B617 /* FolderObj.swift */; };
@@ -63,6 +67,7 @@
 		8870ED9B2D76F5DD0015497C /* FolderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8870ED992D76F5DD0015497C /* FolderTableViewCell.xib */; };
 		8870ED9E2D7700DD0015497C /* FooterFolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8870ED9C2D7700DD0015497C /* FooterFolderTableViewCell.swift */; };
 		8870ED9F2D7700DD0015497C /* FooterFolderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8870ED9D2D7700DD0015497C /* FooterFolderTableViewCell.xib */; };
+		888953E12E4D8BCA00FDB2EC /* XORKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888953E02E4D8BCA00FDB2EC /* XORKeyManager.swift */; };
 		888C6D182D55F50200C33C00 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888C6D172D55F50200C33C00 /* SettingsViewController.swift */; };
 		88941DD52DA7C4C600907E97 /* InternetChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88941DD42DA7C4C600907E97 /* InternetChecker.swift */; };
 		88975A1A2D77ED6A002E6050 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88975A152D77ED6A002E6050 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift */; };
@@ -196,6 +201,9 @@
 		8800EC772D96B0D70035F4E8 /* SpeakWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakWidgetBundle.swift; sourceTree = "<group>"; };
 		8800EC792D96B1D60035F4E8 /* SpeakWidgetExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeakWidgetExtensionRelease.entitlements; sourceTree = "<group>"; };
 		8800EC7A2D96B1F50035F4E8 /* Speak-AIRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Speak-AIRelease.entitlements"; sourceTree = "<group>"; };
+		8811139C2E4C40C400A605DD /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
+		8811139E2E4C436000A605DD /* AnalyticsProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsProperty.swift; sourceTree = "<group>"; };
+		881113A02E4C6BD500A605DD /* AppOpenTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpenTracker.swift; sourceTree = "<group>"; };
 		8813E1C32D8954B500B2B617 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		8813E1C72D8954DF00B2B617 /* speakAI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = speakAI.xcdatamodel; sourceTree = "<group>"; };
 		8813E1C92D8955CC00B2B617 /* FolderObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderObj.swift; sourceTree = "<group>"; };
@@ -245,6 +253,7 @@
 		8870ED992D76F5DD0015497C /* FolderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FolderTableViewCell.xib; sourceTree = "<group>"; };
 		8870ED9C2D7700DD0015497C /* FooterFolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterFolderTableViewCell.swift; sourceTree = "<group>"; };
 		8870ED9D2D7700DD0015497C /* FooterFolderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterFolderTableViewCell.xib; sourceTree = "<group>"; };
+		888953E02E4D8BCA00FDB2EC /* XORKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XORKeyManager.swift; sourceTree = "<group>"; };
 		888C6D172D55F50200C33C00 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		88941DD42DA7C4C600907E97 /* InternetChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetChecker.swift; sourceTree = "<group>"; };
 		88975A122D77ED6A002E6050 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
@@ -354,6 +363,7 @@
 				88F0F0692D83D99700C25897 /* Alamofire in Frameworks */,
 				88FF9C8C2D670A4F00D6CC6F /* PanModal in Frameworks */,
 				88F0F0662D83D95500C25897 /* FlagKit in Frameworks */,
+				8811139A2E4C3EE800A605DD /* Mixpanel in Frameworks */,
 				88BEC8282D59F1CC002D5E10 /* IQKeyboardManagerSwift in Frameworks */,
 				903DF1CC9BE457667C167482 /* Pods_Speak_AI.framework in Frameworks */,
 			);
@@ -381,6 +391,16 @@
 				8800EC6C2D96A71C0035F4E8 /* SpeakWidget.swift */,
 			);
 			path = SpeakWidget;
+			sourceTree = "<group>";
+		};
+		8811139B2E4C40B700A605DD /* MixPanel */ = {
+			isa = PBXGroup;
+			children = (
+				881113A02E4C6BD500A605DD /* AppOpenTracker.swift */,
+				8811139E2E4C436000A605DD /* AnalyticsProperty.swift */,
+				8811139C2E4C40C400A605DD /* AnalyticsManager.swift */,
+			);
+			path = MixPanel;
 			sourceTree = "<group>";
 		};
 		8813E1C42D8954B500B2B617 /* CoreData */ = {
@@ -593,6 +613,7 @@
 		88F6CC832D549A2400ED8D01 /* Speak-AI */ = {
 			isa = PBXGroup;
 			children = (
+				8811139B2E4C40B700A605DD /* MixPanel */,
 				8800EC7A2D96B1F50035F4E8 /* Speak-AIRelease.entitlements */,
 				8800EC732D96ACE90035F4E8 /* Speak-AIDebug.entitlements */,
 				8813E1C42D8954B500B2B617 /* CoreData */,
@@ -629,6 +650,7 @@
 		88F6CCA82D54A06100ED8D01 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				888953E02E4D8BCA00FDB2EC /* XORKeyManager.swift */,
 				88435DD02DAF681F00DF3E1B /* InApPurchaseManager.swift */,
 				88941DD42DA7C4C600907E97 /* InternetChecker.swift */,
 				88E6C9A92D93F83100C27085 /* NeumorphicView.swift */,
@@ -765,6 +787,7 @@
 				8855A0172D84204F00C58325 /* MBProgressHUD */,
 				88ED11872D8A6D50007834C2 /* SkeletonView */,
 				88C7CF322DA519CC00FADB49 /* MarkdownView */,
+				881113992E4C3EE800A605DD /* Mixpanel */,
 			);
 			productName = "Speak-AI";
 			productReference = 88F6CC622D549A1B00ED8D01 /* Speak-AI.app */;
@@ -805,6 +828,7 @@
 				8855A0162D84204F00C58325 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 				88ED11862D8A6D50007834C2 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				88C7CF312DA519CC00FADB49 /* XCRemoteSwiftPackageReference "MarkdownView" */,
+				881113982E4C3EE800A605DD /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 			);
 			productRefGroup = 88F6CC632D549A1B00ED8D01 /* Products */;
 			projectDirPath = "";
@@ -954,6 +978,7 @@
 				88F6CCB52D54A06100ED8D01 /* ArrayExtensions.swift in Sources */,
 				88F6CCD12D54A1FB00ED8D01 /* OnboardingViewController.swift in Sources */,
 				8870ED892D76E4080015497C /* MenuHomeCollect.swift in Sources */,
+				8811139F2E4C436000A605DD /* AnalyticsProperty.swift in Sources */,
 				88ED11852D8A6300007834C2 /* TimeHelper.swift in Sources */,
 				883C43422D687F7D00BEBF21 /* EditTextViewController.swift in Sources */,
 				8813E1CA2D8955CC00B2B617 /* FolderObj.swift in Sources */,
@@ -974,6 +999,7 @@
 				8854C49F2D54A9F400E3AB88 /* HomeViewController.swift in Sources */,
 				88F0F0592D83CBB300C25897 /* LanguageAssemblyAI.swift in Sources */,
 				88FF70D02D783FD900424570 /* FolderRecordingViewController.swift in Sources */,
+				8811139D2E4C40C400A605DD /* AnalyticsManager.swift in Sources */,
 				8854C49B2D54A53900E3AB88 /* OnboardingCollectionViewCell.swift in Sources */,
 				8813E1CE2D897CD500B2B617 /* FileManagerHelper.swift in Sources */,
 				88EF90662D56151800E240DC /* AnimatedButton.swift in Sources */,
@@ -1013,6 +1039,7 @@
 				8854C4982D54A4F000E3AB88 /* ToolModel.swift in Sources */,
 				88F0F06D2D840A4E00C25897 /* OpenAIModel.swift in Sources */,
 				88F6CCBE2D54A06100ED8D01 /* UIFontExtestion+Heplers.swift in Sources */,
+				881113A12E4C6BD500A605DD /* AppOpenTracker.swift in Sources */,
 				88F6CCBF2D54A06100ED8D01 /* UIViewControllerExtensions.swift in Sources */,
 				88EF90602D560A4500E240DC /* TranscriptionLanguageViewController.swift in Sources */,
 				88F0F06B2D83E00300C25897 /* ApiHelper.swift in Sources */,
@@ -1022,6 +1049,7 @@
 				883BB1F22D79A43400D405B9 /* TranscripitonViewController.swift in Sources */,
 				88F6CCC02D54A06100ED8D01 /* UIButtonExtensions.swift in Sources */,
 				88F6CCC12D54A06100ED8D01 /* UICollectionViewExtensions.swift in Sources */,
+				888953E12E4D8BCA00FDB2EC /* XORKeyManager.swift in Sources */,
 				8870ED9E2D7700DD0015497C /* FooterFolderTableViewCell.swift in Sources */,
 				88645CDC2D55E543009B2FA7 /* OptionRecordingViewController.swift in Sources */,
 			);
@@ -1130,7 +1158,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Speak-AI/Speak-AIDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZNGUJ94G8P;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1148,7 +1176,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.speak.ai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1170,7 +1198,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Speak-AI/Speak-AIRelease.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZNGUJ94G8P;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1188,7 +1216,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.speak.ai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1352,6 +1380,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		881113982E4C3EE800A605DD /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		8855A0162D84204F00C58325 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jdg/MBProgressHUD.git";
@@ -1411,6 +1447,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		881113992E4C3EE800A605DD /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 881113982E4C3EE800A605DD /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
+		};
 		8855A0172D84204F00C58325 /* MBProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8855A0162D84204F00C58325 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;

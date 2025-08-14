@@ -11,7 +11,11 @@ import StoreKit
 import SafariServices
 import ApphudSDK
 
-
+enum screenPaywall: String{
+    case onboarding = "Onboarding Paywall"
+    case getPro = "Get Pro Paywall"
+    case limitPaywall = "Limit Paywall"
+}
 struct PlanSubscriptionModel {
     var type: PlanType
     var skProduct: SKProduct
@@ -77,6 +81,7 @@ class PaywallViewController: BaseViewController {
     @IBOutlet weak var lblPriceMonthlt: UILabel!
     @IBOutlet weak var lblPriceYear: UILabel!
     @IBOutlet weak var lblValueBest: UILabel!
+    var typePaywall: screenPaywall = .getPro
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -178,6 +183,10 @@ class PaywallViewController: BaseViewController {
                 switch result {
                 case .success:
                     print("Inapp success--->",result)
+                    if let current = InApPurchaseManager.shared.currentPlanType{
+                        AnalyticsManager.shared.trackEvent(.Subscription_Started, properties: [AnalyticsProperty.planType : self.priceSelected.rawValue, AnalyticsProperty.priceUSD: current.skProduct.price , AnalyticsProperty.currency: current.skProduct.priceLocale.currency?.identifier,AnalyticsProperty.screen: self.typePaywall.rawValue])
+                    }
+                    NotificationCenter.default.post(name: NSNotification.Name(KEY_NOTIFICATION_NAME.PAYWALL_SUCCESS), object: nil)
                     TempStorage.shared.isPremium = true
                     self.dismiss(animated: true)
                    break
@@ -188,6 +197,7 @@ class PaywallViewController: BaseViewController {
                             
                         })
                     } else {
+                        AnalyticsManager.shared.trackEvent(.Error_Occurred, properties: [AnalyticsProperty.errorType: "Appstore", AnalyticsProperty.errorMessage: error.localizedDescription, AnalyticsProperty.screen: "Paywall"])
                         self.showMessageComback(MSG_ERROR.MSG_PURCHAE_ERROR, complete: { success in
                             
                         })

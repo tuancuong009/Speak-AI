@@ -225,6 +225,7 @@ extension FolderViewController: UITableViewDataSource, UITableViewDelegate{
     @objc func doDoneFooter(){
         print("doDoneFooter")
         let folderModel = FolderObj(id: UUID().uuidString, name: footerHomeCell.txfName.text!.trimmed, order: folderWorkings.count + 1)
+        AnalyticsManager.shared.trackEvent(.Folder_Created, properties: [AnalyticsProperty.folderName: footerHomeCell.txfName.text!.trimmed])
         if let folderID = CoreDataManager.shared.saveFolder(folderObj: folderModel) {
             print("Folder saved with ID: \(folderID)")
         } else {

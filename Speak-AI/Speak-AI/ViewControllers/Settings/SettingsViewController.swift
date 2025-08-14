@@ -45,11 +45,14 @@ class SettingsViewController: BaseViewController {
                }
            } else {
                if let error = error{
+                   AnalyticsManager.shared.trackEvent(.Error_Occurred, properties: [AnalyticsProperty.errorType: "Appstore", AnalyticsProperty.errorMessage: error.localizedDescription, AnalyticsProperty.screen: "Settings"])
+                   
                    self.showMessageComback(error.localizedDescription) { success in
                        
                    }
                }
                else{
+                   AnalyticsManager.shared.trackEvent(.Error_Occurred, properties: [AnalyticsProperty.errorType: "Appstore", AnalyticsProperty.errorMessage: "Unfortunately, we couldn't find any previous purchases", AnalyticsProperty.screen: "Settings"])
                    self.showMessageComback("Unfortunately, we couldn't find any previous purchases") { success in
                        
                    }
@@ -73,7 +76,9 @@ class SettingsViewController: BaseViewController {
     }
     
     @IBAction func doGetPremium(_ sender: Any) {
+        AnalyticsManager.shared.trackEvent(.Paywall_Viewed, properties: [AnalyticsProperty.source: "Settings"])
         let vc = PaywallViewController.instantiate()
+        vc.typePaywall = .getPro
         let nav = UINavigationController(rootViewController: vc)
         nav.isNavigationBarHidden = true
         nav.modalPresentationStyle = .fullScreen

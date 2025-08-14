@@ -96,9 +96,24 @@ class DetailRecordingViewController: BaseViewController {
     @IBOutlet weak var btnOption: UIButton!
     @IBOutlet weak var viewSketon: UIView!
     @IBOutlet weak var lblSketon: UILabel!
+    
+    var timerProcess: Timer?
+    var currentSecond = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+    
+    private func registerTimerProgress(){
+        currentSecond = 0
+                
+        timerProcess?.invalidate()
+        timerProcess = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.currentSecond += 1
+        }
     }
     
     @IBAction func doMore(_ sender: Any) {
@@ -111,6 +126,7 @@ class DetailRecordingViewController: BaseViewController {
                 let rowVC: PanModalPresentable.LayoutType = nextVC
                 self.presentPanModal(rowVC)
             } else {
+                AnalyticsManager.shared.trackEvent(.Error_Occurred, properties: [AnalyticsProperty.errorType: "Network", AnalyticsProperty.errorMessage: MESSAGE_APP.NO_INTERNET, AnalyticsProperty.screen: "Detail Recording"])
                 self.showMessageComback(MESSAGE_APP.NO_INTERNET) { success in
                     
                 }
@@ -138,11 +154,11 @@ class DetailRecordingViewController: BaseViewController {
                 exportShareAudio(mergeAudioURL)
             }
             else if action == .shareSummary{
-                
+                AnalyticsManager.shared.trackEvent(.Content_Shared, properties: [AnalyticsProperty.contentType: "Summary"])
                 shareText(self.summaryText)
             }
             else if action == .shareTransacription{
-                
+                AnalyticsManager.shared.trackEvent(.Content_Shared, properties: [AnalyticsProperty.contentType: "Transacription"])
                 shareText(self.transcriptionText)
             }
             else if action == .exportPDF{
@@ -153,6 +169,7 @@ class DetailRecordingViewController: BaseViewController {
                 let nameFile = (self.recordObj?.title ?? "exportfile") + "_\(self.arrMenus[indexMenu])"
                 if let pdfURL = createPDF(from: controller.lblDesc.attributedText ?? NSAttributedString.init(), fileName: nameFile) {
                     print("PDF saved at: \(pdfURL)")
+                    AnalyticsManager.shared.trackEvent(.PDF_Exported, properties: [AnalyticsProperty.exportNoteAsPDF: "Full Transcription and Summary"])
                     self.exportShareAudio(pdfURL)
                 }
             }
@@ -205,7 +222,6 @@ class DetailRecordingViewController: BaseViewController {
     }
     
     @IBAction func doGenrete(_ sender: Any) {
-     
         InternetChecker.isConnected { isConnected in
             if isConnected {
                 guard let recordObj = self.recordObj else{
@@ -213,6 +229,7 @@ class DetailRecordingViewController: BaseViewController {
                 }
                 self.showProgressUploadUploadFileLater(recordObj)
             } else {
+                AnalyticsManager.shared.trackEvent(.Error_Occurred, properties: [AnalyticsProperty.errorType: "Network", AnalyticsProperty.errorMessage: MESSAGE_APP.NO_INTERNET, AnalyticsProperty.screen: "Detail Recording"])
                 self.showMessageComback(MESSAGE_APP.NO_INTERNET) { success in
                     
                 }
@@ -416,6 +433,7 @@ extension DetailRecordingViewController{
     }
     
     private func saveRecordAction(action: ActionAI, text: String){
+   
         let recordAction = RecordActionObj(action: action.rawValue, recordId: recordId, text: text, textAI: text, id: UUID().uuidString)
         _ = CoreDataManager.shared.saveRecordActions(record: recordAction)
         
@@ -464,6 +482,11 @@ extension DetailRecordingViewController{
         detailVC.mergeAudioURL = self.mergeAudioURL
         processRecordingViewController = detailVC
         detailVC.tapComplete = { [] transaction, summary, title, emoji in
+            AnalyticsManager.shared.setProperty(key: AnalyticsProperty.processingTime, value: "\(self.currentSecond) seconds")
+            AnalyticsManager.shared.setProperty(key: AnalyticsProperty.success, value: true)
+            AnalyticsManager.shared.trackEventTmp(event: .Transcription_Completed)
+            AnalyticsManager.shared.clearProperties()
+            
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self.viewContent.isHidden = false
             }
@@ -583,6 +606,7 @@ extension DetailRecordingViewController{
             pageMenu?.moveToPage(index)
         } else {
             print("Not found")
+            AnalyticsManager.shared.trackEvent(.AI_Action_Used, properties: [AnalyticsProperty.actionType: action.name, AnalyticsProperty.language: languageModel?.name ?? ""])
             showBusy()
             getSummary(action: action) { value in
                 self.hideBusy()
@@ -597,6 +621,7 @@ extension DetailRecordingViewController{
     private func showActionDeleteNote(){
         let alert = UIAlertController.init(title: "", message: "Are you sure you want to delete this?", preferredStyle: .actionSheet)
         let actionDelete =  UIAlertAction(title: "Delete Note", style: .destructive) { action in
+            AnalyticsManager.shared.trackEvent(.Note_Deleted)
             _ = CoreDataManager.shared.deleteRecord(withID: self.recordId)
             _ = CoreDataManager.shared.deleteRecordActions(withID: self.recordId)
             if let recordObj = self.recordObj{
@@ -668,6 +693,7 @@ extension DetailRecordingViewController{
             skeletonView(isShow: true)
             let seconds = 0.25
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                self.registerTimerProgress()
                 self.showProgressUploadFile()
             }
         }

@@ -72,22 +72,19 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="oAm-5M-9oX">
-                                <rect key="frame" x="170.66666666666666" y="712" width="51.666666666666657" height="12"/>
+                                <rect key="frame" x="176.33333333333334" y="712" width="40.333333333333343" height="12"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dot2" translatesAutoresizingMaskIntoConstraints="NO" id="I5o-60-mzy">
                                         <rect key="frame" x="0.0" y="0.0" width="6.333333333333333" height="12"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dot1" translatesAutoresizingMaskIntoConstraints="NO" id="QaW-Xy-qvl">
-                                        <rect key="frame" x="11.333333333333343" y="0.0" width="6.3333333333333321" height="12"/>
+                                        <rect key="frame" x="11.333333333333314" y="0.0" width="6.3333333333333321" height="12"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dot1" translatesAutoresizingMaskIntoConstraints="NO" id="w20-Fl-ib4">
-                                        <rect key="frame" x="22.666666666666686" y="0.0" width="6.3333333333333321" height="12"/>
+                                        <rect key="frame" x="22.666666666666657" y="0.0" width="6.3333333333333321" height="12"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dot1" translatesAutoresizingMaskIntoConstraints="NO" id="MI8-LX-EUF">
                                         <rect key="frame" x="34" y="0.0" width="6.3333333333333357" height="12"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dot1" translatesAutoresizingMaskIntoConstraints="NO" id="HEb-mI-Mxd">
-                                        <rect key="frame" x="45.333333333333343" y="0.0" width="6.3333333333333357" height="12"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -132,7 +129,6 @@
                         <outletCollection property="arrDots" destination="QaW-Xy-qvl" collectionClass="NSMutableArray" id="n1D-7V-Lr8"/>
                         <outletCollection property="arrDots" destination="w20-Fl-ib4" collectionClass="NSMutableArray" id="VcE-2c-7w5"/>
                         <outletCollection property="arrDots" destination="MI8-LX-EUF" collectionClass="NSMutableArray" id="k1J-wF-905"/>
-                        <outletCollection property="arrDots" destination="HEb-mI-Mxd" collectionClass="NSMutableArray" id="Y8n-dH-fNh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4A-qB-Li0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4577,7 +4573,7 @@ Speak AI Premium</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="09a-Za-QlI">
-                                                <rect key="frame" x="20" y="91" width="353" height="565.66666666666652"/>
+                                                <rect key="frame" x="20" y="91" width="353" height="565.66666666666663"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jq-da-SKj">
                                                         <rect key="frame" x="0.0" y="0.0" width="353" height="67"/>

@@ -8,6 +8,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import ApphudSDK
+import Mixpanel
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     class var shared: AppDelegate {
@@ -27,18 +28,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.isEnabled = true
         AppSetings.shared.isValidLanguageDefault()
+        AppOpenTracker.shared.saveFirstAppOpenDateIfNeeded()
+        AnalyticsManager.shared.initialize()
         if AppSetings.shared.isOnboading{
             initHome()
         }
         if !UserDefaults.standard.bool(forKey: KeyDefaults.AllFoders){
             saveCoreDataFoderAll()
         }
+        AnalyticsManager.shared.trackEvent(.App_Launched, properties: [AnalyticsProperty.appVersion: Bundle.mainAppVersion ?? "1.0", AnalyticsProperty.osVersion: UIDevice.current.systemVersion, AnalyticsProperty.deviceModel: UIDevice().modelName])
         Apphud.start(apiKey: InApPurchaseManager.Constant.API_KEY.rawValue)
         Apphud.setDelegate(self)
         return true
     }
-
-    
     func initHome(){
         let homeVC = HomeViewController.instantiate()
         let nav = UINavigationController.init(rootViewController: homeVC)

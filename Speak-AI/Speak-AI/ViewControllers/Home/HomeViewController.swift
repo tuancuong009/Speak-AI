@@ -11,6 +11,8 @@ import PanModal
 import SkeletonView
 import Alamofire
 import AVFoundation
+import Mixpanel
+import ApphudSDK
 class HomeViewController: BaseViewController {
     
     @IBOutlet weak var txfSearch: UITextField!
@@ -30,17 +32,7 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setUpPageMenu()
-        if AppDelegate.shared.isOpenRecording{
-            AppDelegate.shared.isOpenRecording = false
-            permisonAudio()
-        }
-        if !TempStorage.shared.isCheckInApp{
-            TempStorage.shared.isCheckInApp = true
-            if !InApPurchaseManager.shared.isPremiumActive{
-                doPremium(Any.self)
-            }
-        }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -66,7 +58,9 @@ class HomeViewController: BaseViewController {
     
     
     @IBAction func doPremium(_ sender: Any) {
+        AnalyticsManager.shared.trackEvent(.Paywall_Viewed, properties: [AnalyticsProperty.source: "Get Pro CTA"])
         let vc = PaywallViewController.instantiate()
+        vc.typePaywall = .getPro
         let nav = UINavigationController(rootViewController: vc)
         nav.isNavigationBarHidden = true
         nav.modalPresentationStyle = .fullScreen
@@ -149,6 +143,53 @@ class HomeViewController: BaseViewController {
         }
     }
     
+    
+    private func updateMixPanel(){
+        let folders =  CoreDataManager.shared.fecthAllFolders()
+        let records = CoreDataManager.shared.fetchAllRecordsGroupedByHumanReadableDate(searchText: nil)
+        let actions = CoreDataManager.shared.fetchAllRecordActions()
+        if InApPurchaseManager.shared.isPremiumActive{
+            let userProps: Properties = [
+                AnalyticsUserProperty.userId: Apphud.userID(),
+                AnalyticsUserProperty.appVersion: Bundle.mainAppVersion ?? "1.0",
+                AnalyticsUserProperty.osVersion: UIDevice.current.systemVersion,
+                AnalyticsUserProperty.deviceModel: UIDevice().modelName,
+                AnalyticsUserProperty.subscriptionStatus: InApPurchaseManager.shared.currentPlanType?.type.rawValue ?? "Free",
+                AnalyticsUserProperty.subscriptionStartDate: InApPurchaseManager.shared.startDate,
+                AnalyticsUserProperty.subscriptionEndDate: InApPurchaseManager.shared.expiresDate,
+                AnalyticsUserProperty.totalRecordings: actions.count,
+                AnalyticsUserProperty.totalTranscriptions: records.count,
+                AnalyticsUserProperty.foldersCreated: folders.count,
+                AnalyticsUserProperty.lastActiveDate:  AppOpenTracker.shared.formatDateSubs(date: Date()),
+                AnalyticsUserProperty.firstAppOpenDate:  AppOpenTracker.shared.getFirstAppOpenDate() ?? "",
+                AnalyticsUserProperty.hasCompletedOnboarding: true,
+                AnalyticsUserProperty.languagePreference: LanguageAssemblyAI.shared.firstLanguage()?.name ?? "English"
+            ]
+
+            AnalyticsManager.shared.identifyUser(id: userProps[AnalyticsUserProperty.userId] as! String)
+            AnalyticsManager.shared.setUserProperties(userProps)
+        }
+        else{
+            let userProps: Properties = [
+                AnalyticsUserProperty.userId: Apphud.userID(),
+                AnalyticsUserProperty.appVersion: Bundle.mainAppVersion ?? "1.0",
+                AnalyticsUserProperty.osVersion: UIDevice.current.systemVersion,
+                AnalyticsUserProperty.deviceModel: UIDevice().modelName,
+                AnalyticsUserProperty.subscriptionStatus: "Free",
+                AnalyticsUserProperty.totalRecordings: actions.count,
+                AnalyticsUserProperty.totalTranscriptions: records.count,
+                AnalyticsUserProperty.foldersCreated: folders.count,
+                AnalyticsUserProperty.lastActiveDate: AppOpenTracker.shared.formatDateSubs(date: Date()),
+                AnalyticsUserProperty.firstAppOpenDate:  AppOpenTracker.shared.getFirstAppOpenDate() ?? "",
+                AnalyticsUserProperty.hasCompletedOnboarding: true,
+                AnalyticsUserProperty.languagePreference: LanguageAssemblyAI.shared.firstLanguage()?.name ?? "English"
+            ]
+
+            AnalyticsManager.shared.identifyUser(id: userProps[AnalyticsUserProperty.userId] as! String)
+            AnalyticsManager.shared.setUserProperties(userProps)
+        }
+        
+    }
    
     
     
@@ -158,11 +199,14 @@ extension HomeViewController: CreateNoteViewControllerDelegate{
         typeCreateNote = createNoteEnum
         switch createNoteEnum {
         case .recordAudio:
+            AnalyticsManager.shared.trackEvent(.Create_Note_Record_Audio)
             self.permisonAudio()
             break
         case .uploadAudio:
+            AnalyticsManager.shared.trackEvent(.Create_Note_Upload_Audio)
             showDocumentPicker(type: .uploadAudio)
         case .uploadVideo:
+            AnalyticsManager.shared.trackEvent(.Create_Note_Upload_Video)
             showDocumentPicker(type: .uploadVideo)
         case .useYoutubeLink:
             let nextVC  = YouTubeViewController()
@@ -209,12 +253,35 @@ extension HomeViewController{
         cltMenu.addGestureRecognizer(longPress)
         self.showContextMenu(isShow: false)
         registerNotification()
+        setUpPageMenu()
+        if AppDelegate.shared.isOpenRecording{
+            AppDelegate.shared.isOpenRecording = false
+            permisonAudio()
+        }
+        if !TempStorage.shared.isCheckInApp{
+            TempStorage.shared.isCheckInApp = true
+            if !InApPurchaseManager.shared.isPremiumActive{
+                AnalyticsManager.shared.trackEvent(.Paywall_Viewed, properties: [AnalyticsProperty.source: "Onboarding"])
+                let vc = PaywallViewController.instantiate()
+                vc.typePaywall = .onboarding
+                let nav = UINavigationController(rootViewController: vc)
+                nav.isNavigationBarHidden = true
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true)
+               
+            }
+        }
+        updateMixPanel()
     }
     
     private func registerNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(addNewFoderNotification( _:)), name: NSNotification.Name(rawValue: KeyDefaults.newFolder), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(paywallSuccess), name: NSNotification.Name(rawValue: KEY_NOTIFICATION_NAME.PAYWALL_SUCCESS), object: nil)
     }
     
+    @objc func paywallSuccess(){
+        updateMixPanel()
+    }
     @objc func addNewFoderNotification(_ notification: NSNotification){
         if let object = notification.object as? FolderObj{
             folders.append(object)
@@ -319,6 +386,7 @@ extension HomeViewController{
         AVAudioSession.sharedInstance().requestRecordPermission { granted in
             if granted {
                 OperationQueue.main.addOperation() {
+                    AnalyticsManager.shared.trackEvent(.Recording_Started, properties: [AnalyticsProperty.recording: "In-App-Recording"])
                     let vc = RecordingViewController.instantiate()
                     vc.tapAgainData = { [] in
                         self.showHideUI()

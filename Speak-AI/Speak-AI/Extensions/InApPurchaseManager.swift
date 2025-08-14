@@ -65,6 +65,13 @@ class InApPurchaseManager: ApphudDelegate {
         return subscription.expiresDate
     }
     
+    var startDate: Date{
+        guard let subscription = Apphud.subscriptions()?.first(where: {$0.isActive()}) else {
+            return Date()
+        }
+        return subscription.startedAt
+    }
+    
     var currentPlanType: PlanSubscriptionModel? {
         guard let products = InApPurchaseManager.shared.products, !products.isEmpty else {
             return nil

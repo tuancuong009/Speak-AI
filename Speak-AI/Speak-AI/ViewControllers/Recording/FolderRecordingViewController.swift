@@ -108,6 +108,7 @@ extension FolderRecordingViewController: UITableViewDataSource, UITableViewDeleg
     
     @objc func doDoneFooter(){
         let folderModel = FolderObj(id: UUID().uuidString, name: footerHomeCell.txfName.text!.trimmed, order: folders.count + 1)
+        AnalyticsManager.shared.trackEvent(.Folder_Created, properties: [AnalyticsProperty.folderName: footerHomeCell.txfName.text!.trimmed])
         if let folderID = CoreDataManager.shared.saveFolder(folderObj: folderModel) {
             print("Folder saved with ID: \(folderID)")
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: KeyDefaults.newFolder), object: folderModel)
