@@ -144,54 +144,39 @@ class HomeViewController: BaseViewController {
     }
     
     
-    private func updateMixPanel(){
-        let folders =  CoreDataManager.shared.fecthAllFolders()
+    private func updateMixPanel() {
+        
+        AnalyticsManager.shared.identifyUser(id: Apphud.userID())
+        
+        let folders = CoreDataManager.shared.fecthAllFolders()
         let records = CoreDataManager.shared.fetchAllRecordsGroupedByHumanReadableDate(searchText: nil)
         let actions = CoreDataManager.shared.fetchAllRecordActions()
-        if InApPurchaseManager.shared.isPremiumActive{
-            let userProps: Properties = [
-                AnalyticsUserProperty.userId: Apphud.userID(),
-                AnalyticsUserProperty.appVersion: Bundle.mainAppVersion ?? "1.0",
-                AnalyticsUserProperty.osVersion: UIDevice.current.systemVersion,
-                AnalyticsUserProperty.deviceModel: UIDevice().modelName,
-                AnalyticsUserProperty.subscriptionStatus: InApPurchaseManager.shared.currentPlanType?.type.rawValue ?? "Free",
-                AnalyticsUserProperty.subscriptionStartDate: InApPurchaseManager.shared.startDate,
-                AnalyticsUserProperty.subscriptionEndDate: InApPurchaseManager.shared.expiresDate,
-                AnalyticsUserProperty.totalRecordings: actions.count,
-                AnalyticsUserProperty.totalTranscriptions: records.count,
-                AnalyticsUserProperty.foldersCreated: folders.count,
-                AnalyticsUserProperty.lastActiveDate:  AppOpenTracker.shared.formatDateSubs(date: Date()),
-                AnalyticsUserProperty.firstAppOpenDate:  AppOpenTracker.shared.getFirstAppOpenDate() ?? "",
-                AnalyticsUserProperty.hasCompletedOnboarding: true,
-                AnalyticsUserProperty.languagePreference: LanguageAssemblyAI.shared.firstLanguage()?.name ?? "English"
-            ]
-
-            AnalyticsManager.shared.identifyUser(id: userProps[AnalyticsUserProperty.userId] as! String)
-            AnalyticsManager.shared.setUserProperties(userProps)
-        }
-        else{
-            let userProps: Properties = [
-                AnalyticsUserProperty.userId: Apphud.userID(),
-                AnalyticsUserProperty.appVersion: Bundle.mainAppVersion ?? "1.0",
-                AnalyticsUserProperty.osVersion: UIDevice.current.systemVersion,
-                AnalyticsUserProperty.deviceModel: UIDevice().modelName,
-                AnalyticsUserProperty.subscriptionStatus: "Free",
-                AnalyticsUserProperty.totalRecordings: actions.count,
-                AnalyticsUserProperty.totalTranscriptions: records.count,
-                AnalyticsUserProperty.foldersCreated: folders.count,
-                AnalyticsUserProperty.lastActiveDate: AppOpenTracker.shared.formatDateSubs(date: Date()),
-                AnalyticsUserProperty.firstAppOpenDate:  AppOpenTracker.shared.getFirstAppOpenDate() ?? "",
-                AnalyticsUserProperty.hasCompletedOnboarding: true,
-                AnalyticsUserProperty.languagePreference: LanguageAssemblyAI.shared.firstLanguage()?.name ?? "English"
-            ]
-
-            AnalyticsManager.shared.identifyUser(id: userProps[AnalyticsUserProperty.userId] as! String)
-            AnalyticsManager.shared.setUserProperties(userProps)
+        
+        let isPremium = InApPurchaseManager.shared.isPremiumActive
+        var userProps: Properties = [
+            AnalyticsUserProperty.userId: Apphud.userID(),
+            AnalyticsUserProperty.appVersion: Bundle.mainAppVersion ?? "1.0",
+            AnalyticsUserProperty.osVersion: UIDevice.current.systemVersion,
+            AnalyticsUserProperty.deviceModel: UIDevice().modelName,
+            AnalyticsUserProperty.subscriptionStatus: isPremium
+                ? (InApPurchaseManager.shared.currentPlanType?.type.rawValue ?? "Free")
+                : "Free",
+            AnalyticsUserProperty.totalRecordings: actions.count,
+            AnalyticsUserProperty.totalTranscriptions: records.count,
+            AnalyticsUserProperty.foldersCreated: folders.count,
+            AnalyticsUserProperty.lastActiveDate: AppOpenTracker.shared.formatDateSubs(date: Date()),
+            AnalyticsUserProperty.firstAppOpenDate: AppOpenTracker.shared.getFirstAppOpenDate() ?? "",
+            AnalyticsUserProperty.hasCompletedOnboarding: true,
+            AnalyticsUserProperty.languagePreference: LanguageAssemblyAI.shared.firstLanguage()?.name ?? "English"
+        ]
+        
+        if isPremium {
+            userProps[AnalyticsUserProperty.subscriptionStartDate] = InApPurchaseManager.shared.startDate
+            userProps[AnalyticsUserProperty.subscriptionEndDate] = InApPurchaseManager.shared.expiresDate
         }
         
+        AnalyticsManager.shared.setUserProperties(userProps)
     }
-   
-    
     
 }
 extension HomeViewController: CreateNoteViewControllerDelegate{

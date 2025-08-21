@@ -39,13 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AnalyticsManager.shared.trackEvent(.App_Launched, properties: [AnalyticsProperty.appVersion: Bundle.mainAppVersion ?? "1.0", AnalyticsProperty.osVersion: UIDevice.current.systemVersion, AnalyticsProperty.deviceModel: UIDevice().modelName])
         Apphud.start(apiKey: InApPurchaseManager.Constant.API_KEY.rawValue)
         Apphud.setDelegate(self)
+        
+        
         return true
     }
     func initHome(){
         let homeVC = HomeViewController.instantiate()
         let nav = UINavigationController.init(rootViewController: homeVC)
         nav.isNavigationBarHidden = true
-      
+        
         if let window = self.window {
             let options: UIView.AnimationOptions = .transitionCrossDissolve
             UIView.transition(with: window, duration: 0.5, options: options, animations: {
@@ -67,9 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.scheme == "myappscheme" && url.host == "openapp" {
-            // Xử lý mở app tại đây
-            print("Widget clicked, opening app...")
-            
             AppDelegate.shared.isOpenRecording = true
             self.initHome()
             return true

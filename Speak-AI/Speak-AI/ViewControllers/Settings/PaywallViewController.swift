@@ -10,7 +10,7 @@ import PanModal
 import StoreKit
 import SafariServices
 import ApphudSDK
-
+import Mixpanel
 enum screenPaywall: String{
     case onboarding = "Onboarding Paywall"
     case getPro = "Get Pro Paywall"
@@ -138,6 +138,7 @@ class PaywallViewController: BaseViewController {
     @IBAction func doClose(_ sender: Any) {
         dismiss(animated: true)
     }
+    
     @IBAction func doPrivacy(_ sender: Any) {
         if let url = URL.init(string: ConfigSettings.PRIVACY){
             let vc = WebViewController.init()
@@ -174,6 +175,7 @@ class PaywallViewController: BaseViewController {
         self.performPurchase(product: product)
     }
     
+   
     private func performPurchase(product: ApphudProduct) {
         self.showBusy()
         InApPurchaseManager.shared.makePurchase(product: product) {[weak self] result in

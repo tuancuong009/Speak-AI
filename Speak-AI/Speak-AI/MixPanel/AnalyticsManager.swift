@@ -52,7 +52,12 @@ final class AnalyticsManager {
     }
     
     func identifyUser(id: String) {
+        let key = "mixpanel_identified_user"
+        if UserDefaults.standard.string(forKey: key) == id {
+            return
+        }
         Mixpanel.mainInstance().identify(distinctId: id)
+        UserDefaults.standard.set(id, forKey: key)
     }
     
     /// Set toàn bộ user properties lên Mixpanel
